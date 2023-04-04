@@ -44,7 +44,7 @@ class DatabaseConnection
     public function __construct(DatabaseConfig $config)
     {
         $this->config = $config;
-        $this->connection = new mysqli(
+        $this->connection = mysqli_connect(
             $this->config->getHost(),
             $this->config->getUsername(),
             $this->config->getPassword(),
