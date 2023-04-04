@@ -20,7 +20,7 @@ class Config
     public function __construct()
     {
         $this->cleardb_url = parse_url(getenv("CLEARDB_DATABASE_URL"));
-        $this->cleardb_password = isset($this->cleardb_url["pass"]) ? $this->cleardb_url["pass"] : '';
+        $this->cleardb_password = isset($this->cleardb_url["password"]) ? $this->cleardb_url["password"] : '';
         $this->cleardb_server = isset($this->cleardb_url["host"]) ? $this->cleardb_url["host"] : '';
         $this->cleardb_db = isset($this->cleardb_url["path"]) ? substr($this->cleardb_url["path"], 1) : '';
         $this->cleardb_username = isset($this->cleardb_url["user"]) ? $this->cleardb_url["user"] : '';
