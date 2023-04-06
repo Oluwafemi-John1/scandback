@@ -1,38 +1,37 @@
 <?php
 class DatabaseConfig
 {
-    private $cleardb_server;
-    private $cleardb_username;
-    private $cleardb_password;
-    private $cleardb_db;
+    private $host;
+    private $username;
+    private $password;
+    private $dbName;
     
-    public function __construct($cleardb_server, $cleardb_username, $cleardb_password, $cleardb_db)
+    public function __construct($host, $username, $password, $dbName)
     {
-        $this->cleardb_server = $cleardb_server;
-        $this->cleardb_username = $cleardb_username;
-        $this->cleardb_password = $cleardb_password;
-        $this->cleardb_db = $cleardb_db;
+        $this->host = $host;
+        $this->username = $username;
+        $this->password = $password;
+        $this->dbName = $dbName;
     }
-
     
     public function getHost()
     {
-        return $this->cleardb_server;
+        return $this->host;
     }
     
     public function getUsername()
     {
-        return $this->cleardb_username;
+        return $this->username;
     }
     
     public function getPassword()
     {
-        return $this->cleardb_password;
+        return $this->password;
     }
     
     public function getDbName()
     {
-        return $this->cleardb_db;
+        return $this->dbName;
     }
 }
 
@@ -44,7 +43,7 @@ class DatabaseConnection
     public function __construct(DatabaseConfig $config)
     {
         $this->config = $config;
-        $this->connection = mysqli_connect(
+        $this->connection = new mysqli(
             $this->config->getHost(),
             $this->config->getUsername(),
             $this->config->getPassword(),
