@@ -8,7 +8,7 @@ header("Content-type: application/json; charset=UTF-8");
 require "ConfigAbstract.php";
 class Config
 {
-    protected $localhost = 'us-cdbr-east-06.net';
+    protected $localhost = 'us-cdbr-east-06.cleardb.net';
     // protected $username = 'root'; 
     // protected $dbName = 'scandiweb';
     // protected $password = '';
