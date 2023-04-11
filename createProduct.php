@@ -2,8 +2,8 @@
 
 require "classes/Product.php";
 $_POST = json_decode(file_get_contents("php://input"),true);
-// $sku = $_POST['sku'];
-// $name = $_POST['name'];
+$sku = $_POST['sku'];
+$name = $_POST['name'];
 // $price = $_POST['price'];
 // $productType = $_POST['productType'];
 // $size = $_POST['size'];
@@ -14,4 +14,4 @@ $_POST = json_decode(file_get_contents("php://input"),true);
 
 // $product = new Product($sku, $name, $price, $productType, $size, $weight, $height, $width, $length);
 // $saved = $product->save();
-echo json_encode($_POST);
+echo json_encode($sku.$name);
