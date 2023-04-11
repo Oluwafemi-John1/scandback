@@ -6,15 +6,16 @@ header("Content-type: application/json; charset=UTF-8");
 
 
 require "ConfigAbstract.php";
+// mysql://b2aa7ed824b54e:61572917@us-cdbr-east-06.cleardb.net/heroku_fb53b11f8671d7c?reconnect=true
 class Config
 {
     protected $localhost = 'us-cdbr-east-06.cleardb.net';
     // protected $username = 'root'; 
     // protected $dbName = 'scandiweb';
     // protected $password = '';
-    protected $username = 'b5e90a7634be98';
-    protected $dbName = 'heroku_815e2d29be3e012';
-    protected $password = 'd48c8ea9'; 
+    protected $username = 'b2aa7ed824b54e';
+    protected $dbName = 'heroku_fb53b11f8671d7c';
+    protected $password = '61572917'; 
     public $connectdb = "";
     // mysql://b5e90a7634be98:d48c8ea9@us-cdbr-east-06.cleardb.net/heroku_815e2d29be3e012?reconnect=true
     public $res = [];
