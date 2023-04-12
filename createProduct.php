@@ -24,6 +24,6 @@ $saved = $product->save($sku, $name, $price, $productType, $size, $weight, $heig
 
 // Send the response as JSON
 header("Content-Type: application/json");
-echo json_encode($saved);
+echo json_encode($data);
 
 ?>
