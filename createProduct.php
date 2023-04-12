@@ -12,6 +12,6 @@ $height = $_POST['height'];
 $width = $_POST['width'];
 $length = $_POST['length'];
 
-$product = new Product($sku, $name, $price, $productType, $size, $weight, $height, $width, $length);
-$saved = $product->save();
+$product = new Product("","","","");
+$saved = $product->save($sku, $name, $price, $productType, $size, $weight, $height, $width, $length);
 echo json_encode($saved);
