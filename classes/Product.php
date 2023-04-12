@@ -1,8 +1,12 @@
 <?php
 
-require "ProductAbstract.php";
-class Product extends ProductAbstract
+require "Config.php";
+class Product extends Config
 {
+    protected $sku;
+    protected $name;
+    protected $price;
+    protected $productType;
     protected $size;
     protected $length;
     protected $weight;
@@ -10,13 +14,50 @@ class Product extends ProductAbstract
     protected $width;
     public function __construct($sku, $name, $price, $productType, $size = null,  $weight = null, $height = null, $width = null,$length = null)
     {
-        parent::__construct($sku, $name, $price, $productType);
-
+        Parent::__construct();
+        $this->sku = $sku;
+        $this->name = $name;
+        $this->price = $price;
+        $this->productType = $productType;
         $this->size = $size;
         $this->length = $length;
         $this->weight = $weight;
         $this->height = $height;
         $this->width = $width;
+    }
+    public function getSku()
+    {
+        return $this->sku;
+    }
+
+    public function setSku($sku)
+    {
+        $this->sku = $sku;
+    }
+
+    public function getName()
+    {
+        return $this->name;
+    }
+
+    public function setName($name)
+    {
+        $this->name = $name;
+    }
+
+    public function getPrice()
+    {
+        return $this->price;
+    }
+
+    public function setPrice($price)
+    {
+        $this->price = $price;
+    }
+
+    public function getProductType()
+    {
+        return $this->productType;
     }
 
     public function getSize()
