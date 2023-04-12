@@ -16,14 +16,14 @@ $height = $_POST['height'];
 $width = $_POST['width'];
 $length = $_POST['length'];
 // Create a new product object
-$product = new Product();
+$product = new Product($sku, $name, $price, $productType);
 
 // Save the product and get the result
-// $saved = $product->save($sku, $name, $price, $productType, $size, $weight, $height, $width, $length);
+$saved = $product->save($sku, $name, $price, $productType, $size, $weight, $height, $width, $length);
 
 // Send the response as JSON
 header("Content-Type: application/json");
-echo json_encode($product);
+echo json_encode($saved);
 
 }
 else {
