@@ -16,7 +16,7 @@ $height = $_POST['height'];
 $width = $_POST['width'];
 $length = $_POST['length'];
 // Create a new product object
-$product = new Product($sku, $name, $price, $productType);
+$product = new Product($sku, $name, $price, $productType, $size, $weight, $height, $width, $length);
 
 // Save the product and get the result
 $saved = $product->save($sku, $name, $price, $productType, $size, $weight, $height, $width, $length);
