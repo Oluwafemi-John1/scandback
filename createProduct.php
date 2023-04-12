@@ -2,8 +2,8 @@
 
 require "classes/Product.php";
 
-// Get the JSON data from the request body
-$data = json_decode(file_get_contents("php://input"), true);
+$_POST = json_decode(file_get_contents("php://input"), true);
+if(isset($_POST['sku'])){
 
 // Sanitize the input data
 $sku = $_POST['sku'];
@@ -23,6 +23,10 @@ $product = new Product();
 
 // Send the response as JSON
 header("Content-Type: application/json");
-echo json_encode($product->save());
+echo json_encode($product);
 
+}
+else {
+    echo json_encode(['success' => false, 'message' => 'Invalid Request']);
+}
 ?>
