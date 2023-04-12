@@ -19,10 +19,10 @@ $length = $_POST['length'];
 $product = new Product();
 
 // Save the product and get the result
-$saved = $product->save($sku, $name, $price, $productType, $size, $weight, $height, $width, $length);
+// $saved = $product->save($sku, $name, $price, $productType, $size, $weight, $height, $width, $length);
 
 // Send the response as JSON
 header("Content-Type: application/json");
-echo json_encode($saved);
+echo json_encode($product->save());
 
 ?>
