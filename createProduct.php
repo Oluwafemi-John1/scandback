@@ -17,13 +17,13 @@ $width = filter_var($data['width'], FILTER_SANITIZE_NUMBER_FLOAT, FILTER_FLAG_AL
 $length = filter_var($data['length'], FILTER_SANITIZE_NUMBER_FLOAT, FILTER_FLAG_ALLOW_FRACTION);
 
 // Create a new product object
-$product = new Product($sku, $name, $price, $productType);
+$product = new Product("","","","");
 
 // Save the product and get the result
 $saved = $product->save($sku, $name, $price, $productType, $size, $weight, $height, $width, $length);
 
 // Send the response as JSON
 header("Content-Type: application/json");
-echo json_encode($data);
+echo json_encode($saved);
 
 ?>
