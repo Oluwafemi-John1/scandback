@@ -6,16 +6,15 @@ require "classes/Product.php";
 $data = json_decode(file_get_contents("php://input"), true);
 
 // Sanitize the input data
-$sku = filter_var($data['sku'], FILTER_SANITIZE_FULL_SPECIAL_CHARS);
-$name = filter_var($data['name'], FILTER_SANITIZE_FULL_SPECIAL_CHARS);
-$price = filter_var($data['price'], FILTER_SANITIZE_NUMBER_FLOAT, FILTER_FLAG_ALLOW_FRACTION);
-$productType = filter_var($data['productType'], FILTER_SANITIZE_FULL_SPECIAL_CHARS);
-$size = filter_var($data['size'], FILTER_SANITIZE_NUMBER_FLOAT, FILTER_FLAG_ALLOW_FRACTION);
-$weight = filter_var($data['weight'], FILTER_SANITIZE_NUMBER_FLOAT, FILTER_FLAG_ALLOW_FRACTION);
-$height = filter_var($data['height'], FILTER_SANITIZE_NUMBER_FLOAT, FILTER_FLAG_ALLOW_FRACTION);
-$width = filter_var($data['width'], FILTER_SANITIZE_NUMBER_FLOAT, FILTER_FLAG_ALLOW_FRACTION);
-$length = filter_var($data['length'], FILTER_SANITIZE_NUMBER_FLOAT, FILTER_FLAG_ALLOW_FRACTION);
-
+$sku = $_POST['sku'];
+$name = $_POST['name'];
+$price = $_POST['price'];
+$productType = $_POST['productType'];
+$size = $_POST['size'];
+$weight = $_POST['weight'];
+$height = $_POST['height'];
+$width = $_POST['width'];
+$length = $_POST['length'];
 // Create a new product object
 $product = new Product("","","","");
 
