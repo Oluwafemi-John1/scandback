@@ -1,6 +1,6 @@
 <?php
 
-require_once "classes/Product.php";
+require "classes/Product.php";
 
 // Get the JSON data from the request body
 $data = json_decode(file_get_contents("php://input"), true);
