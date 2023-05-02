@@ -3,24 +3,29 @@ header("Access-Control-Allow-Origin: *");
 header("Access-Control-Allow-Methods: GET, POST, OPTIONS, PUT, DELETE");
 header("Access-Control-Allow-Headers: Content-Disposition, Content-Type, Content-Length, Accept-Encoding, Authorization, X-Requested-With");
 header("Content-type: application/json; charset=UTF-8");
-
+use DatabaseConfig;
+use DatabaseConnection;
+use Dotenv\Dotenv;
 
 require "ConfigAbstract.php";
-// mysql://b2aa7ed824b54e:61572917@us-cdbr-east-06.cleardb.net/heroku_fb53b11f8671d7c?reconnect=true
 class Config
 {
-    protected $localhost = 'us-cdbr-east-06.cleardb.net';
-    // protected $username = 'root'; 
-    // protected $dbName = 'scandiweb';
-    // protected $password = '';
-    protected $username = 'b2aa7ed824b54e';
-    protected $dbName = 'heroku_fb53b11f8671d7c';
-    protected $password = '61572917'; 
+    protected $localhost;
+    protected $username;
+    protected $dbName;
+    protected $password;
     public $connectdb = "";
-    // mysql://b5e90a7634be98:d48c8ea9@us-cdbr-east-06.cleardb.net/heroku_815e2d29be3e012?reconnect=true
     public $res = [];
     public function __construct()
     {
+        // Load environment variables from .env file
+        $dotenv = Dotenv::createImmutable(__DIR__);
+        $dotenv->load();
+        
+        $this->localhost = $_ENV['HOST'];
+        $this->username = $_ENV['USERNAME'];
+        $this->dbName = $_ENV['DB_NAME'];
+        $this->password = $_ENV['PASSWORD'];
         $config = new DatabaseConfig($this->localhost, $this->username,$this->password, $this->dbName);
         $connectionObject = new DatabaseConnection($config);
         $this->connectdb = $connectionObject->getConnection();
@@ -47,28 +52,6 @@ class Config
             }
         
     }
-
-    //  public function create($query, $binder)
-    //  {
-    //      $statement = $this->connectdb->prepare($query);
-    //      $statement->bind_param(...$binder);
-
-    //     // Clear any remaining result sets
-    //     while ($this->connectdb->next_result()) {
-    //         if ($this->connectdb->store_result()) {
-    //             $this->connectdb->use_result();
-    //         }
-    //     }
-
-    //     if ($statement->execute()) {
-    //         $this->res['success'] = true;
-    //         $this->res['message'] = "Product created successfully";
-    //     } else {
-    //         $this->res['success'] = false;
-    //         $this->res['message'] = "Product can not be created successfully";
-    //     }
-    //     return $this->res;
-    // }
 
     public function create($query,$binder){
         $statement = $this ->connectdb->prepare($query);
