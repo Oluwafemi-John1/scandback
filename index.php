@@ -45,7 +45,7 @@ $endpoints = [
                     }
                     
                     // Create a new product instance and save it
-                    $saved =  $newProduct->save();
+                    $saved =  $newProduct->save($sku, $name, $price, $productType, $size,  $weight, $height, $width, $length);
 
                     echo json_encode($saved);
                     return;
