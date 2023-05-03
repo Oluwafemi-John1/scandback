@@ -33,19 +33,18 @@ $endpoints = [
                     $height = filter_var($input['height'] ?? '', FILTER_VALIDATE_FLOAT);
                     $width = filter_var($input['width'] ?? '', FILTER_VALIDATE_FLOAT);
                     $length = filter_var($input['length'] ?? '', FILTER_VALIDATE_FLOAT);
-                    if ($productType == 'DVD') {
+                    if ($input['productType'] == 'DVD') {
                         $newProduct = new DVD($sku, $name, $price, $productType, $size);
-                    } elseif ($productType == 'Book') {
-                        $newProduct = new Book($sku, $name, $price, $productType, $weight );
-                    } elseif ($productType == 'Furniture') {
+                    } elseif ($input['productType'] == 'Book') {
+                        $newProduct = new Book($sku, $name, $price, $productType, $weight);
+                    } elseif ($input['productType'] == 'Furniture') {
                         $newProduct = new Furniture($sku, $name, $price, $productType, $height, $width, $length);
                     } else {
                         // Handle invalid product type
-                        echo json_encode(['success' => false, 'message' => 'Invalid Product Type']);
+                        echo json_encode(['success' => false, 'message' => 'Invalid product Type']);
                     }
-                    
                     // Create a new product instance and save it
-                    $saved =  $newProduct->save($sku, $name, $price, $productType, $size,  $weight, $height, $width, $length);
+                    $saved = $newProduct->save($sku, $name, $price, $productType, $size, $weight, $height, $width, $length);
 
                     echo json_encode($saved);
                     return;
@@ -96,11 +95,10 @@ $method = $_SERVER['REQUEST_METHOD'];
 // Check if the endpoint and the method are valid
 if (isset($endpoints[$requestUri])) {
     $data = $endpoints[$requestUri];
-
     if ($method === $data['method']) {
         $data['function']();
         return;
     }
-
 }
+
 ?>
