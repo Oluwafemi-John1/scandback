@@ -3,11 +3,13 @@ header("Access-Control-Allow-Origin: *");
 header("Access-Control-Allow-Methods: GET, POST, OPTIONS, PUT, DELETE");
 header("Access-Control-Allow-Headers: Content-Disposition, Content-Type, Content-Length, Accept-Encoding, Authorization, X-Requested-With");
 header("Content-type: application/json; charset=UTF-8");
-use DatabaseConfig;
-use DatabaseConnection;
-use Dotenv\Dotenv;
+
 
 require "ConfigAbstract.php";
+
+require realpath("vendor/autoload.php");
+use Dotenv\Dotenv;
+
 class Config
 {
     protected $localhost;
@@ -18,14 +20,13 @@ class Config
     public $res = [];
     public function __construct()
     {
-        // Load environment variables from .env file
         $dotenv = Dotenv::createImmutable(__DIR__);
         $dotenv->load();
         
-        $this->localhost = $_ENV['HOST'];
-        $this->username = $_ENV['USERNAME'];
+        $this->localhost = $_ENV['DB_HOST'];
+        $this->username = $_ENV['DB_USERNAME'];
         $this->dbName = $_ENV['DB_NAME'];
-        $this->password = $_ENV['PASSWORD'];
+        $this->password = $_ENV['DB_PASSWORD'];
         $config = new DatabaseConfig($this->localhost, $this->username,$this->password, $this->dbName);
         $connectionObject = new DatabaseConnection($config);
         $this->connectdb = $connectionObject->getConnection();
@@ -106,3 +107,4 @@ class Config
     }
 
 }
+?>
