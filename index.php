@@ -81,14 +81,14 @@ $endpoints = [
 ];
 
 // Get the requested URI
-$requestUri = $_SERVER['REQUEST_URI'];
+$requestUrl = $_SERVER['REQUEST_URI'];
 
 // Split the URI into an array using the delimiter '/'
-$uriParts = end(explode('/', $requestUri));
+$uriParts = explode('/', $requestUrl);
 
 // Get the last element of the array
-$requestUri =end($uriParts);
-
+$requestURi =end($uriParts);
+$requestUri= "/".$requestURi;
 // Get the request method
 $method = $_SERVER['REQUEST_METHOD'];
 
@@ -100,5 +100,5 @@ $method = $_SERVER['REQUEST_METHOD'];
 //         return;
 //     }
 // }
-echo json_encode($uriParts);
+echo json_encode($requestUri);
 ?>
