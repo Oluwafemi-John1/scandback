@@ -100,5 +100,5 @@ $method = $_SERVER['REQUEST_METHOD'];
 //         return;
 //     }
 // }
-echo json_encode($uriParts);
+echo json_encode(end($uriParts));
 ?>
