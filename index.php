@@ -96,9 +96,8 @@ $method = $_SERVER['REQUEST_METHOD'];
 if (isset($endpoints[$requestUri])) {
     $data = $endpoints[$requestUri];
     if ($method === $data['method']) {
-//         $data['function']();
-//         return;
-    echo json_encode($requestUri);
+        $data['function']();
+        return;
     }
 }
 
