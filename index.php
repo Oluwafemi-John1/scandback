@@ -11,7 +11,7 @@ $endpoints = [
         'function' => function () {
 //             $product = new Product("", "", "", "");
 //             $data = $product->getProductData();
-            echo json_encode("$data");
+            echo json_encode("buy");
         }
     ],
     '/createProduct' => [
