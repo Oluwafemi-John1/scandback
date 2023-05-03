@@ -84,7 +84,7 @@ $endpoints = [
 $requestUri = $_SERVER['REQUEST_URI'];
 
 // Split the URI into an array using the delimiter '/'
-$uriParts = explode('/', $requestUri);
+$uriParts = end(explode('/', $requestUri));
 
 // Get the last element of the array
 $requestUri =end($uriParts);
@@ -100,5 +100,5 @@ $method = $_SERVER['REQUEST_METHOD'];
 //         return;
 //     }
 // }
-echo json_encode($requestUri);
+echo json_encode($uriParts);
 ?>
