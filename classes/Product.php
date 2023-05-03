@@ -84,7 +84,7 @@ class Product extends ProductAbstract
     {
         // Prepare the query
         $query = "SELECT * FROM Products ORDER By ProductID DESC";
-        $binder = null;
+        $binder = null;  
     
         // $product = new self();
         return $this->read($query, $binder);
@@ -98,7 +98,7 @@ class Product extends ProductAbstract
 
 class DVD extends Product
 {
-    private $size;
+    protected $size;
 
     public function __construct($sku, $name, $price,$productType, $size)
     {
@@ -112,16 +112,16 @@ class DVD extends Product
         $query = "INSERT INTO Products (sku, name, price, productType, size) VALUES (?, ?, ?, ?, ?)";
 
         // Set the parameters
-        $binder = array("ssisi", $this->getSku(), $this->getName(), $this->getPrice(), $this->getProductType(), $this->size);
+        $binder = array("ssisi", $this->getSku(), $this->getName(), $this->getPrice(), $this->getProductType(), $this->getSize());
 
         return $this->create($query, $binder);
     }
 }
 class Book extends Product
 {
-    private $weight;
+    protected $weight;
 
-    public function __construct($sku, $name, $price,$productType, $weight)
+    public function __construct($sku, $name, $price, $productType, $weight)
     {
         parent::__construct($sku, $name, $price, 'Book', $weight);
         $this->weight = $weight;
@@ -141,11 +141,11 @@ class Book extends Product
 
 class Furniture extends Product
 {
-    private $height;
-    private $width;
-    private $length;
+    protected $height;
+    protected $width;
+    protected $length;
 
-    public function __construct($sku, $name, $price,$productType, $height, $width, $length)
+    public function __construct($sku, $name, $price, $productType, $height, $width, $length)
     {
         parent::__construct($sku, $name, $price, 'Furniture', $height, $width, $length);
         $this->height = $height;
@@ -165,4 +165,5 @@ class Furniture extends Product
     }
 }
 
-?>  
+
+?>
