@@ -87,7 +87,7 @@ $requestUri = $_SERVER['REQUEST_URI'];
 $uriParts = explode('/', $requestUri);
 
 // Get the last element of the array
-$requestUri ='/'.end($uriParts);
+$requestUri =end($uriParts);
 
 // Get the request method
 $method = $_SERVER['REQUEST_METHOD'];
