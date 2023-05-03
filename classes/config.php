@@ -6,27 +6,16 @@ header("Content-type: application/json; charset=UTF-8");
 
 
 require "ConfigAbstract.php";
-
-require realpath("vendor/autoload.php");
-use Dotenv\Dotenv;
-
 class Config
 {
-    protected $localhost;
-    protected $username;
-    protected $dbName;
-    protected $password;
+    protected $localhost = 'us-cdbr-east-06.cleardb.net';
+    protected $username = 'b2aa7ed824b54e';
+    protected $dbName = 'heroku_fb53b11f8671d7c';
+    protected $password = '61572917'; 
     public $connectdb = "";
     public $res = [];
     public function __construct()
     {
-        $dotenv = Dotenv::createImmutable(__DIR__);
-        $dotenv->load();
-        
-        $this->localhost = $_ENV['DB_HOST'];
-        $this->username = $_ENV['DB_USERNAME'];
-        $this->dbName = $_ENV['DB_NAME'];
-        $this->password = $_ENV['DB_PASSWORD'];
         $config = new DatabaseConfig($this->localhost, $this->username,$this->password, $this->dbName);
         $connectionObject = new DatabaseConnection($config);
         $this->connectdb = $connectionObject->getConnection();
@@ -107,4 +96,3 @@ class Config
     }
 
 }
-?>
