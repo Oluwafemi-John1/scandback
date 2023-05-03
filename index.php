@@ -99,6 +99,8 @@ if (isset($endpoints[$requestUri])) {
         $data['function']();
         return;
     }
+    else{
+        echo json_encode($requestUri);
 }
 
 ?>
