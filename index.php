@@ -9,9 +9,9 @@ $endpoints = [
     '/getProduct' => [
         'method' => 'GET',
         'function' => function () {
-//             $product = new Product("", "", "", "");
-//             $data = $product->getProductData();
-            echo json_encode("buy");
+            $product = new Product("", "", "", "");
+            $data = $product->getProductData();
+            echo json_encode($data);
         }
     ],
     '/createProduct' => [
