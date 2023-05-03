@@ -9,9 +9,9 @@ $endpoints = [
     '/getProduct' => [
         'method' => 'GET',
         'function' => function () {
-            $product = new Product("", "", "", "");
-            $data = $product->getProductData();
-            echo json_encode($data);
+//             $product = new Product("", "", "", "");
+//             $data = $product->getProductData();
+            echo json_encode("$data");
         }
     ],
     '/createProduct' => [
@@ -81,24 +81,24 @@ $endpoints = [
 ];
 
 // Get the requested URI
-$requestUrl = $_SERVER['REQUEST_URI'];
+$requestUri = $_SERVER['REQUEST_URI'];
 
 // Split the URI into an array using the delimiter '/'
-$uriParts = explode('/', $requestUrl);
+$uriParts = explode('/', $requestUri);
 
 // Get the last element of the array
-$requestURi =end($uriParts);
-$requestUri= "/".$requestURi;
+$requestUri ='/'.end($uriParts);
+
 // Get the request method
 $method = $_SERVER['REQUEST_METHOD'];
 
 // Check if the endpoint and the method are valid
-// if (isset($endpoints[$requestUri])) {
-//     $data = $endpoints[$requestUri];
-//     if ($method === $data['method']) {
-//         $data['function']();
-//         return;
-//     }
-// }
-echo json_encode($requestUri);
+if (isset($endpoints[$requestUri])) {
+    $data = $endpoints[$requestUri];
+    if ($method === $data['method']) {
+        $data['function']();
+        return;
+    }
+}
+
 ?>
