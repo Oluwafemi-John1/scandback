@@ -93,12 +93,12 @@ $requestUri ='/'.end($uriParts);
 $method = $_SERVER['REQUEST_METHOD'];
 
 // Check if the endpoint and the method are valid
-if (isset($endpoints[$requestUri])) {
-    $data = $endpoints[$requestUri];
-    if ($method === $data['method']) {
-        $data['function']();
-        return;
-    }
-}
-
+// if (isset($endpoints[$requestUri])) {
+//     $data = $endpoints[$requestUri];
+//     if ($method === $data['method']) {
+//         $data['function']();
+//         return;
+//     }
+// }
+echo json_encode($uriParts);
 ?>
